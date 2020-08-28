@@ -1,0 +1,16 @@
+/* YOUR CUSTOM STYLES */
+
+.blue-gradient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+}
+
+.radio-group {
+    margin-left: 15px
+}
+
+.qty {
+    font-weight: bold;
+}
