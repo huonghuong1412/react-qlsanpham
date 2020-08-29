@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar'
-import Products from './components/Products/Products'
 import routes from './routes'
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
@@ -11,17 +10,8 @@ class App extends React.Component {
       <BrowserRouter>
         <div className="App">
           <Navbar />
-          <hr></hr>
           <div className="container">
-            <div className="row mt-3">
-              {/* <div className="col-12">
-              <button className="btn btn-primary btn-add">
-                Thêm mới
-              </button>
-            </div>
-            <div className="col-12">
-              <Products />
-            </div> */}
+            <div className="row mt-4">
               {this.showMenuNavbar(routes)}
             </div>
           </div>

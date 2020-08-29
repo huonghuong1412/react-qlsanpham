@@ -1,9 +1,9 @@
 
-
 table.table td, table.table th {
     padding-top: 10px;
     padding-bottom: 10px;
     vertical-align: middle;
+    font-weight: 400;
 }
 
 .table td, .table th {
@@ -11,11 +11,11 @@ table.table td, table.table th {
 }
 
 .btn {
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .btn-add {
-    padding: 12px 24px;
+    padding: 12px 20px;
 }
 
 .btn-action {

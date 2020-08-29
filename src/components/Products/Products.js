@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import ProductItem from '../ProductItem/ProductItem';
-import Title from '../Title/Title'
 import './index.css'
 
 class Products extends Component {
   render() {
     return (
       <div className="col-12">
-        <Title />
         <table className="table table-bordered table-hover mt-3">
           <thead className="thead-dark">
             <tr>
@@ -20,8 +17,7 @@ class Products extends Component {
             </tr>
           </thead>
           <tbody>
-            <ProductItem />
-            <ProductItem />
+            {this.props.children}
           </tbody>
         </table>
       </div>
