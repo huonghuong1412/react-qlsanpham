@@ -1,0 +1,57 @@
+
+
+table.table td, table.table th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    vertical-align: middle;
+}
+
+.table td, .table th {
+    padding: 0 12px;
+}
+
+.btn {
+    font-size: 10px;
+}
+
+.btn-add {
+    padding: 12px 24px;
+}
+
+.btn-action {
+    padding: 8px 16px;
+}
+
+.heading {
+    font-size: 36px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.badge {
+    padding: 6px 12px;
+    border-radius: 3px;
+}
+
+/* .th-name {
+    width: 300px;
+} */
+
+.th-action {
+    width: 200px;
+}
+
+.th-stt {
+    width: 50px;
+}
+
+.th-status {
+    width: 150px;
+}
+
+.th-code {
+    width: 150px;
+}
+
+.th-price {
+    width: 200px;
+}

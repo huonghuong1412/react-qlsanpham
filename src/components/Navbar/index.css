@@ -1,0 +1,15 @@
+.nav {
+    background-color: #fff;
+}
+
+.nav-link {
+    padding: 12px 20px;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(73, 74, 76);
+}
+
+.nav-link:hover {
+    color: #ea1919;
+    transition: 0.3s all ease;
+}
