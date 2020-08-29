@@ -1,22 +1,40 @@
 {
-    "products": [
-        {
-            "id": 1,
-            "name": "Name 1",
-            "price": 1000,
-            "status": true
-        },
-        {
-            "id": 2,
-            "name": "Name 2",
-            "price": 1200,
-            "status": true
-        },
-        {
-            "id": 3,
-            "name": "Name 3",
-            "price": 1500,
-            "status": false
-        }
-    ]
+  "products": [
+    {
+      "id": 1,
+      "name": "Samsung 10",
+      "price": 1000,
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "Xiaomi 5",
+      "price": 1200,
+      "status": true
+    },
+    {
+      "id": 3,
+      "name": "Huawei P30 Pro",
+      "price": 1500,
+      "status": false
+    },
+    {
+      "name": "Item 1",
+      "price": "800",
+      "status": false,
+      "id": 4
+    },
+    {
+      "name": "Item 6",
+      "price": "901",
+      "status": true,
+      "id": 5
+    },
+    {
+      "name": "Item 4",
+      "price": "500",
+      "status": true,
+      "id": 6
+    }
+  ]
 }

@@ -5,6 +5,7 @@ import ProductItem from '../../components/ProductItem/ProductItem'
 // import ProductContainer from '../../container/ProductsContainer'
 import { connect } from 'react-redux';
 import callAPI from '../../callAPI/callAPI';
+import { Link } from 'react-router-dom';
 
 class ProductsPage extends Component {
     constructor(props) {
@@ -22,6 +23,18 @@ class ProductsPage extends Component {
         })
     }
 
+    deleteProduct = (id) => {
+        callAPI(`products/${id}`, 'DELETE', null).then((res) => {
+            if (res.status === 200) {
+                callAPI('products', 'GET', null).then(res => {
+                    this.setState({
+                        products: res.data
+                    })
+                })
+            }
+        })
+    }
+
     showListProducts = (products) => {
         var result = null;
         if (products.length > 0) {
@@ -30,6 +43,7 @@ class ProductsPage extends Component {
                     key={index}
                     product={item}
                     index={index}
+                    deleteProduct={this.deleteProduct}
                 ></ProductItem>
             })
         }
@@ -42,9 +56,10 @@ class ProductsPage extends Component {
             <>
                 <div className="col-12">
                     <Title />
-                    <button className="btn btn-primary btn-add">
-                        Thêm sản phẩm
-                    </button>
+                    <Link
+                        className="btn btn-primary btn-add"
+                        to="/products/add"
+                    >Thêm sản phẩm</Link>
                 </div>
                 <Products>
                     {this.showListProducts(products)}

@@ -1,10 +1,10 @@
 import axios from 'axios'
 import * as api from '../constants/api'
 
-export default function callAPI(enpoint, method = 'GET', body) {
+export default function callAPI(path, method = 'GET', body) {
     return axios({
         method: method,
-        url: `${api.API_URL}/${enpoint}`,
+        url: `${api.API_URL}/${path}`,
         data: body
     }).catch((err) => {
         console.log(err)

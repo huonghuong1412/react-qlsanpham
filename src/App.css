@@ -4,7 +4,27 @@
     box-sizing: border-box;
 }
 
+html {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 .form-control:focus {
     outline: none;
     box-shadow: none;
+}
+
+.btn:focus {
+    box-shadow: none;
+}
+
+.success {
+    background-color: cyan;
+    font-size: 80%;
+    font-weight: 500;
+}
+
+.warning {
+    background-color: #ddb142;
+    font-size: 80%;
+    font-weight: 500;
 }
