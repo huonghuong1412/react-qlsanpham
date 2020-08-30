@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import callAPI from '../../callAPI/callAPI'
 import { Link } from 'react-router-dom';
+import * as actions from '../../actions/index'
+import { connect } from 'react-redux';
 
 class ProductsActionsPage extends Component {
     constructor(props) {
@@ -17,14 +18,18 @@ class ProductsActionsPage extends Component {
         var { match } = this.props;
         if (match) {
             var id = match.params.id;
-            callAPI(`products/${id}`, 'GET', null).then((res) => {
-                // console.log(res.data);
-                this.setState({
-                    id: res.data.id,
-                    name: res.data.name,
-                    price: res.data.price,
-                    status: res.data.status
-                })
+            this.props.editProductItem(id);
+        }
+    }
+
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        console.log("NextProps: ", nextProps);
+        if (nextProps && nextProps.itemEdit) {
+            this.setState({
+                id: nextProps.itemEdit.id,
+                name: nextProps.itemEdit.name,
+                price: nextProps.itemEdit.price,
+                status: nextProps.itemEdit.status
             })
         }
     }
@@ -40,33 +45,21 @@ class ProductsActionsPage extends Component {
 
     saveData = (e) => {
         e.preventDefault();
-        // console.log(this.state);
         var { name, price, id, status } = this.state;
         var { history } = this.props;
-        if ((name === "" || price === "")) {
-            alert("Không bỏ trống dữ liệu")
-        } else if (Number.isInteger(price) === false) {
-            alert('Giá phải là số tự nhiên');
+        var product = {
+            id: id,
+            name: name,
+            price: price,
+            status: status
+        }
+        if (id) {
+            this.props.updateProductItem(product)
+            history.goBack();
+            this.props.getListProduct();
         } else {
-            if (id) {
-                callAPI(`products/${id}`, 'PUT', {
-                    name: name,
-                    price: price,
-                    status: status
-                }).then((res) => {
-                    // console.log(res);
-                    history.goBack();
-                })
-            } else {
-                callAPI('products', 'POST', {
-                    name: name,
-                    price: price,
-                    status: status
-                }).then((res) => {
-                    // console.log(res);
-                    history.goBack();
-                })
-            }
+            this.props.addProduct(product);
+            history.goBack();
         }
     }
 
@@ -123,7 +116,6 @@ class ProductsActionsPage extends Component {
                                     <button
                                         type="submit"
                                         className="btn btn-add ml-2 btn-primary"
-
                                     >Lưu lại</button>
                                 </div>
                             </form>
@@ -135,5 +127,28 @@ class ProductsActionsPage extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        itemEdit: state.itemEdit
+    }
+}
 
-export default ProductsActionsPage;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getListProduct: () => {
+            dispatch(actions.actGetRequest())
+        },
+        addProduct: (product) => {
+            dispatch(actions.actAddRequest(product))
+        },
+        editProductItem: (id) => {
+            dispatch(actions.actGetProductItemRequest(id))
+        },
+        updateProductItem: (product) => {
+            dispatch(actions.actUpdateRequest(product))
+        }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsActionsPage);

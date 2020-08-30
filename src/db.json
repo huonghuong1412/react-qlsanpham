@@ -7,34 +7,34 @@
       "status": true
     },
     {
-      "id": 2,
-      "name": "Xiaomi 5",
-      "price": 1200,
-      "status": true
+      "name": "Samsung 10",
+      "price": 1000,
+      "status": false,
+      "id": 2
     },
     {
       "id": 3,
-      "name": "Huawei P30 Pro",
-      "price": 1500,
-      "status": false
+      "name": "Samsung 10",
+      "price": 1000,
+      "status": true
     },
     {
-      "name": "Item 1",
-      "price": "800",
+      "name": "Huong",
+      "price": "1000",
       "status": false,
       "id": 4
     },
     {
-      "name": "Item 6",
-      "price": "901",
-      "status": true,
-      "id": 5
+      "id": 5,
+      "name": "Item 4",
+      "price": "800",
+      "status": false
     },
     {
-      "name": "Item 4",
-      "price": "500",
-      "status": true,
-      "id": 6
+      "id": 6,
+      "name": "Huong",
+      "price": "800",
+      "status": false
     }
   ]
 }

@@ -4,35 +4,18 @@ import Products from '../../components/Products/Products'
 import ProductItem from '../../components/ProductItem/ProductItem'
 // import ProductContainer from '../../container/ProductsContainer'
 import { connect } from 'react-redux';
-import callAPI from '../../callAPI/callAPI';
 import { Link } from 'react-router-dom';
+import * as actions from '../../actions/index'
+
 
 class ProductsPage extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            products: []
-        }
-    }
 
     componentDidMount() {
-        callAPI('products', 'GET', null).then(res => {
-            this.setState({
-                products: res.data
-            })
-        })
+        this.props.getListProducts();
     }
 
     deleteProduct = (id) => {
-        callAPI(`products/${id}`, 'DELETE', null).then((res) => {
-            if (res.status === 200) {
-                callAPI('products', 'GET', null).then(res => {
-                    this.setState({
-                        products: res.data
-                    })
-                })
-            }
-        })
+        this.props.deleteProductItem(id);
     }
 
     showListProducts = (products) => {
@@ -50,8 +33,8 @@ class ProductsPage extends Component {
         return result;
     }
     render() {
-        // var products = this.props.products;
-        var products = this.state.products;
+        var { products } = this.props;
+        // var products = this.state.products;
         return (
             <>
                 <div className="col-12">
@@ -76,4 +59,18 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, null)(ProductsPage);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        // getListProducts: (products) => {
+        //     dispatch(actions.getListProducts(products))
+        // },
+        getListProducts: () => {
+            dispatch(actions.actGetRequest())
+        },
+        deleteProductItem: (id) => {
+            dispatch(actions.actDeleteRequest(id))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsPage);
